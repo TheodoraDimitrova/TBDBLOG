@@ -1,0 +1,54 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo">TBDBlog</a>
+    <ul id="dropdown1" class="dropdown-content">
+      
+      <li>
+        <a href="/manage/articles">Articles</a>
+      </li>
+      <li>
+        <a href="/manage/categories">Categories</a>
+      </li>
+      <li>
+        <a href="/manage/users">Users</a>
+      </li>
+      <li class="divider"></li>
+
+    </ul>
+    <ul class="right">
+      {{#if user}}
+      <li>
+        <a href="/users/profile">Profile</a>
+      </li>
+      <li>
+        <a href="/categories/">All Categories</a>
+      </li>
+      <li>
+        <a href="/articles/">Articles</a>
+      </li>
+      <li>
+        <a href="/questions/">Questions</a>
+      </li>
+
+      <li>
+        <a href="/users/logout">Logout</a>
+      </li>
+     
+      {{else}}
+      <li>
+        <a href="/users/login">Login</a>
+      </li>
+      <li>
+        <a href="/users/register">Register</a>
+      </li>
+      {{/if}} {{#if is_admin}}
+      <li>
+        <a class="dropdown-trigger" href="#!" data-target="dropdown1">Manage
+          <i class="material-icons right">arrow_drop_down</i>
+        </a>
+      </li>
+      {{/if}}
+    </ul>
+
+  </div>
+</nav>

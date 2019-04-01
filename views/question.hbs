@@ -1,0 +1,100 @@
+<div class="article row">
+    <div class="single-post">
+        <article class="post-wrapper">
+            <header class="entry-header-wrapper clearfix sticky">
+                <div class="entry-header">
+                    <h2 class="entry-title">{{question.title}}</h2>
+                    <h4 class="entry-title">{{question.category.title}}</h4>
+                    <div class="entry-meta">
+                        <ul class="list-inline">
+                            <li>
+                                <i class="fa fa-user"></i>
+                                {{question.author.name}}
+                            </li>
+                            <li>
+                                <i class="fa fa-clock-o"></i>
+                                {{ question.created_at }}
+                            </li>
+                            <li>
+                                <i class="fa fa-comment-o"></i>
+                                {{question.answers.length}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <div class="entry-content">
+                <p>{{{question.description}}}</p>
+            </div>
+            {{#if is_admin}}
+            <div class="right">
+                <a class="waves-effect waves-light btn red" href="/questions/answers/delete/{{question._id}}">Delete</a>
+            </div>
+            {{/if}}
+            <br>
+            <br>
+            <center>
+                <h3>Leave a Answer</h3>
+                <div class="row">
+                    {{#if errors }} {{#each errors }}
+                    <div class="msg msg-error z-depth-3 scale-transition"> {{this.msg}} </div>
+                    {{/each}} {{/if}}
+                </div>
+
+            </center>
+            <form action="/questions/comments/add{{question._id}}" method="post">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <p>Your answer</p>
+                        <textarea class="materialize-textarea" id="comment-body" name="answer"></textarea>
+
+                    </div>
+                </div>
+                <center>
+                    <button class="btn waves-effect waves-light teal green" type="submit">Leave a answer</button>
+                </center>
+            </form>
+
+            <ul class="comment">
+
+
+                {{#each question.answers}}
+
+                <li>
+
+                    <div class="comment-info">
+                        <a href="#">
+                            <img class="avatar" src="https://trendytheme.net/demo/matrox/assets/img/blog/commenter-1.jpg" alt="Jonathon Doe">
+                        </a>
+                        <h4 class="author-name">{{answer_author.name}} {{answer_author.last}}</h4>
+
+                    </div>
+
+                    <div class="comment">
+                        <p>{{{answer_body}}}</p>
+                        <span>
+                            <i class="fa fa-clock-o"></i>
+                            {{ this.comment_d }}</span>
+                        <div class="right">
+                            {{#if this.comment_isAuthor}}
+
+                            <a class="waves-effect waves-light btn red" href="/questions/answers/delete/{{this._id}}/{{questionId}}">Delete</a>
+                            {{/if}}
+
+                        </div>
+                    </div>
+
+                </li>
+                <hr> {{/each}}
+
+
+
+            </ul>
+            <a href="#top" class="page-scroll btn-floating btn-large pink back-top waves-effect waves-light tt-animate btt" data-section="#top">
+                <i class="material-icons"></i>
+            </a>
+            <a class="waves-effect waves-light btn right " href="/questions/">Back</a>
+        </article>
+    </div>
+</div>

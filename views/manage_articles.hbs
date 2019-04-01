@@ -1,0 +1,33 @@
+<div class="article_blocks">
+    <div class="center-align">
+        <h3 class="teal-text">{{title}}</h3>
+        <a class="waves-effect waves-light btn " href="/manage/articles/add">Add Article</a>
+    </div>
+
+    <hr>
+
+    <div class="col s12">
+        <table class="striped">
+            <tr>
+                <th>Article Title</th>
+                <th>Date Published</th>
+                <th>Author</th>
+                <th></th>
+            </tr>
+            {{#each articles}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>{{this.created_at}}</td>
+                <td>{{this.author}}</td>
+                <td>
+                    <a class="waves-effect waves-light btn" href="/manage/articles/edit/{{this._id}}">Edit</a>
+                </td>
+            </tr>
+
+            {{/each}}
+
+        </table>
+
+    </div>
+
+</div>

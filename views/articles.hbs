@@ -1,0 +1,31 @@
+<center>
+    <h3 class="teal-text">{{title}}</h3>
+</center>
+
+
+
+<div class="col-md-8">
+    <div class="row">
+        {{#each articles}}
+
+
+        <div class="card blue-grey darken-2">
+            <div class="post-date">
+                {{date}}
+            </div>
+            <div class="card-content white-text ">
+                <a href="/articles/show/{{this._id}}">
+                    <h4>{{this.title}}</h4>
+                </a>
+                <h6>{{this.subtitle}}</h6>
+                <p>{{this.created_at}} by {{this.author}}</p>
+            </div>
+            <span class="post-comments-number">
+                <i class="fa fa-comments"></i>
+                <a href="#">{{this.comments.length}}</a>
+            </span>
+        </div>
+
+        {{/each}}
+    </div>
+</div>

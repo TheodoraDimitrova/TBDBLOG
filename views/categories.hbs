@@ -1,0 +1,18 @@
+<center>
+    <h3 class="teal-text">{{title}}</h3>
+</center>
+<div class="category_blocks container z-depth-2 ">
+
+    <ul>
+
+        {{#each categories}}
+        <li>
+            <h3>
+                <a href="/articles/category/{{this._id}}">{{this.title}}</a>
+            </h3>
+        </li>
+
+        {{/each}}
+
+    </ul>
+</div>
