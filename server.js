@@ -47,7 +47,10 @@ app.use(express.static(path.join(__dirname, "public")));
 //Connection to DB
 const db = require("./config/keys").mongoURI;
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(db, {
+    useCreateIndex: true,
+    useNewUrlParser: true
+  })
   .then(() => console.log("MongoDB connected"))
   .catch(() => {
     err => console.log(err);
