@@ -3,9 +3,9 @@
         <article class="post-wrapper">
             <header class="entry-header-wrapper clearfix sticky">
                 <div class="entry-header">
-                    <h2 class="entry-title">{{question.title}}</h2>
-                    <h4 class="entry-title">{{question.category.title}}</h4>
-                    <div class="entry-meta">
+                    <h2 class="center-align">{{question.title}}</h2>
+                    <h4 class="right-align">{{question.category.title}}</h4>
+                
                         <ul class="list-inline">
                             <li>
                                 <i class="fa fa-user"></i>
@@ -20,13 +20,13 @@
                                 {{question.answers.length}}
                             </li>
                         </ul>
-                    </div>
+                
                 </div>
             </header>
 
-            <div class="entry-content">
+        
                 <p>{{{question.description}}}</p>
-            </div>
+            
             {{#if is_admin}}
             <div class="right">
                 <a class="waves-effect waves-light btn red" href="/questions/answers/delete/{{question._id}}">Delete</a>

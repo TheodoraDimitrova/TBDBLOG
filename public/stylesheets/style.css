@@ -80,10 +80,7 @@ nav ul li a {
   padding: 16px;
   border: 1px solid #eee;
   background-color: #ffffffa1;
-  -webkit-transition: all 0.25s;
-  -moz-transition: all 0.25s;
-  -ms-transition: all 0.25s;
-  transition: all 0.25s;
+
   border-radius: 2px;
   margin-bottom: 50px;
 }
@@ -116,7 +113,7 @@ nav ul li a {
   width: 100%;
 }
 .article {
-  width: 70%;
+  width: 90%;
   margin-top: 30px;
 }
 /* single article style end */
@@ -152,14 +149,16 @@ ul.comment {
 /* containers for categories and articles manage*/
 .category_blocks {
   background-color: #ffffffa1;
-  margin-top: 80px;
+  margin-top: 50px;
   width: 70%;
   padding: 10px;
+  margin-bottom: 50px;
 }
 
 .article_blocks {
   background-color: #ffffffa1;
-  margin: 70px;
+   margin: 30px; 
+   width: 80%;
 }
 .col-md-8 {
   display: flex;

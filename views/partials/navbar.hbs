@@ -1,21 +1,10 @@
 <nav>
   <div class="nav-wrapper">
     <a href="/" class="brand-logo">TBDBlog</a>
-    <ul id="dropdown1" class="dropdown-content">
-      
-      <li>
-        <a href="/manage/articles">Articles</a>
-      </li>
-      <li>
-        <a href="/manage/categories">Categories</a>
-      </li>
-      <li>
-        <a href="/manage/users">Users</a>
-      </li>
-      <li class="divider"></li>
+    <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-    </ul>
-    <ul class="right">
+    
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
       {{#if user}}
       <li>
         <a href="/users/profile">Profile</a>
@@ -33,7 +22,7 @@
       <li>
         <a href="/users/logout">Logout</a>
       </li>
-     
+
       {{else}}
       <li>
         <a href="/users/login">Login</a>
@@ -43,12 +32,77 @@
       </li>
       {{/if}} {{#if is_admin}}
       <li>
-        <a class="dropdown-trigger" href="#!" data-target="dropdown1">Manage
+        <a class="dropdown-trigger" href="#!" data-target="dropdown2">Manage
           <i class="material-icons right">arrow_drop_down</i>
         </a>
       </li>
+      
+     <ul id="dropdown2" class="dropdown-content">
+      <li>
+        <a class="blue-text text-darken-2" href="/manage/articles">Articles</a>
+      </li>
+      <li>
+        <a class="blue-text text-darken-2" href="/manage/categories">Categories</a>
+      </li>
+      <li>
+        <a class="blue-text text-darken-2" href="/manage/users">Users</a>
+      </li>
+    </ul>
+      
       {{/if}}
     </ul>
 
+
+
+
   </div>
 </nav>
+
+<ul id="dropdown1" class="dropdown-content">
+      <li>
+        <a class="blue-text text-darken-2" href="/manage/articles">Articles</a>
+      </li>
+      <li>
+        <a class="blue-text text-darken-2" href="/manage/categories">Categories</a>
+      </li>
+      <li>
+        <a class="blue-text text-darken-2" href="/manage/users">Users</a>
+      </li>
+    </ul>
+
+
+<ul class="sidenav" id="mobile-nav">
+  {{#if user}}
+  <li>
+    <a href="/users/profile">Profile</a>
+  </li>
+  <li>
+    <a href="/categories/">All Categories</a>
+  </li>
+  <li>
+    <a href="/articles/">Articles</a>
+  </li>
+  <li>
+    <a href="/questions/">Questions</a>
+  </li>
+
+  <li>
+    <a href="/users/logout">Logout</a>
+  </li>
+
+  {{else}}
+  <li>
+    <a href="/users/login">Login</a>
+  </li>
+  <li>
+    <a href="/users/register">Register</a>
+  </li>
+  {{/if}} {{#if is_admin}}
+  <li>
+    <a class="dropdown-trigger" href="#!" data-target="dropdown1">Manage
+      <i class="material-icons right">arrow_drop_down</i>
+    </a>
+  </li>
+  
+  {{/if}}
+</ul>
