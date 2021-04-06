@@ -1,0 +1,28 @@
+<div class="article row">
+    <div class="single-post">
+        <article class="post-wrapper">
+<form action="/articles/comments/add{{article._id}}" method="post">
+    <div class="row">
+        <div class="input-field col s12 ">
+            <input id="subject" type="text" name="subject" class="validate">
+            <label for="subject">Enter subject</label>
+        </div>
+    </div>
+
+
+    <div class="row">
+         
+        <div class="input-field col s12">
+           <p>Your comment</p>
+            <textarea class="materialize-textarea" id="comment-body" name="comment"></textarea>
+            
+        </div>
+    </div>
+    <center>
+        <button class="btn waves-effect waves-light teal green" type="submit">Add Comment</button>
+    </center>
+</form>
+
+</div>
+</div>
+</div>

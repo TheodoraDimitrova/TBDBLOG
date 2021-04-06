@@ -1,0 +1,35 @@
+
+    <div class="row">
+       <a class="col s12 m3  waves-effect waves-yellow btn-small" href="/questions/" style="font-weight:bold">All questions</a>
+      <h4><a class="col s12 m3 waves-effect waves-yellow btn-small" href="/questions/answered" style="font-weight:bold">Answered</a></h4>
+       <h4><a class="col s12 m3 waves-effect waves-yellow btn-small" href="/questions/unanswered" style="font-weight:bold">Not Answered</a></h4>
+       <h4><a class="col s12 m3 waves-effect waves-yellow btn-small" href="/questions/create" style="font-weight:bold">Ask a question</a></h4>
+
+            
+
+    </div>
+
+<center>
+    <h3 class="teal-text">{{title}}</h3>
+</center>
+
+    <div class="container" style="margin-bottom: 50px">
+        {{#each questions}}
+        <div class="card blue-grey darken-3">
+            <div class="post-date">
+                {{date}}
+            </div>
+            <div class="card-content white-text ">
+                <a href="/questions/show/{{_id}}">
+                    <h4>{{title}}</h4>
+                </a>
+                <h6>{{category.title}}</h6>
+                <p>{{created_at}} by {{author.name}} {{author.last}}</p>
+            </div>
+            <span class="post-comments-number">
+                <i class="fa fa-comments"></i>
+                <a href="/questions/show/{{_id}}">{{answers.length}}</a>
+            </span>
+        </div>
+        {{/each}}
+    </div>

@@ -1,0 +1,38 @@
+
+
+<div class="container z-depth-2  category_blocks">
+    <form class="col s12" action="/questions/create" method="POST">
+        <div class="form-container">
+            <h3 class="teal-text">{{title}}</h3>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="title" type="text" name="title" class="validate">
+                    <label for="title">Title</label>
+                </div>
+            </div>
+          <label>Select Category</label>
+         <div class="row">
+            <select class="browser-default" name="category">
+                {{#each categories}}
+                <option value=""></option>
+                <option value={{this._id}}>{{this.title}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+            <div class="row">
+                 <label for="description">Description</label>
+                <div class="input-field col s12">
+                    <textarea id="description" class="materialize-textarea" name="description"></textarea>
+                   
+                </div>
+            </div>
+            <br>
+            <center>
+                <button class="btn waves-effect waves-light teal green" type="submit">Add</button>
+                <a class="waves-effect waves-light btn " href="/questions/">Back</a>
+            </center>
+        </div>
+    </form>
+
+</div>
