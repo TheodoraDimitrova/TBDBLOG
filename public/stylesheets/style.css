@@ -1,12 +1,7 @@
 body {
-<<<<<<< HEAD
-  background: url("../images/background1.jpg") no-repeat center center fixed;
-  background-size: cover;
-=======
   background: url("../images/background.jpg") no-repeat center center fixed;
   background-size: cover;
 
->>>>>>> updated
 }
 /* navbar */
 .nav-wrapper {
@@ -33,13 +28,10 @@ nav ul li a {
 .navbar a:hover {
   color: #ddd;
 }
-<<<<<<< HEAD
-=======
 .header{
 
   font-weight: 600;
 }
->>>>>>> updated
 /* end navbar */
 
 
@@ -215,10 +207,7 @@ text-decoration: underline;
 color : #8ACD28;
 }
 
-<<<<<<< HEAD
-=======
 #cke_description,#cke_context{
 
 margin-top: 20px;
 }
->>>>>>> updated
