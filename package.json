@@ -11,6 +11,7 @@
   "author": "TBD",
   "license": "MIT",
   "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
@@ -23,6 +24,7 @@
     "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.24.0",
     "mongoose": "^5.4.10",
+    "morgan": "^1.10.0",
     "passport": "^0.4.0",
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0"

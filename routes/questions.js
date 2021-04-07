@@ -79,9 +79,9 @@ router.get("/show/:id", isAuth, (req, res, next) => {
 
 router.get("/create", isAuth, (req, res, next) => {
   Category.getCategories((err, categories) => {
-    if (err) {
-      console.log(err);
-    }
+    // if (err) {
+    //   console.log(err);
+    // }
     res.render("create_question", {
       title: "Ask a Question",
       categories: categories

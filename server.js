@@ -1,22 +1,38 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
+const morgan = require("morgan");
 const mongoose = require('mongoose');
 const $ = require('jquery');
 const session = require('express-session');
 const expressValidator = require('express-validator');
 const hbs = require('express-handlebars');
+
 const passport = require('passport');
+const Handlebars = require('handlebars')
+const expressHandlebars = require('express-handlebars');
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
 const app = express();
+// Add Access Control Allow Origin headers
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 app.use(expressValidator());
 
 // Passport Config
 require('./config/passport')(passport);
 
 //Body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({extended:false}))
+
+app.use(morgan("dev")); 
+
+app.use(express.json())
 
 // Express session
 app.use(
@@ -36,25 +52,35 @@ app.engine(
   '.hbs',
   hbs({
     defaultLayout: 'main',
+    hbs: allowInsecurePrototypeAccess(hbs),
     extname: '.hbs',
-    partialsDir: [__dirname + '/views/partials']
+    partialsDir: [__dirname + '/views/partials',],
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
   })
 );
-app.set('view engine', '.hbs');
+
+app.set('view engine', 'hbs');
+// app.set('view engine', '.hbs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Connection to DB
-const db = require('./config/keys').mongoURI;
-mongoose
-  .connect(db, {
-    useCreateIndex: true,
-    useNewUrlParser: true
-  })
-  .then(() => console.log('MongoDB connected'))
-  .catch(() => {
-    err => console.log(err);
-  });
+const db = require('./config/keys').MONGO_URI;
+const connnectDB = async () => {
+  try {
+      const conn = await mongoose.connect(db, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+      })
+      console.log(`MongoDB Connected: ${conn.connection.host}`);
+
+  } catch (err) {
+      console.error(err);
+      process.exit(1)
+  }
+}
+connnectDB()
 
 // Global variables
 app.use(function(req, res, next) {
@@ -85,5 +111,7 @@ app.use('/questions', require('./routes/questions'));
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
+
   console.log(`Server starts at port ${port}`);
+  
 });

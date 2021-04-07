@@ -23,13 +23,13 @@ router.post("/login", (req, res, next) => {
     res.render("login", {
       errors: errors
     });
+   
   } else {
     passport.authenticate("local", {
       successRedirect: "/",
       failureRedirect: "/users/login",
       failureFlash: true
     })(req, res, next);
-    
   }
 });
 
@@ -55,8 +55,8 @@ router.post("/register", (req, res, next) => {
   req.checkBody("last", "Last Name field is required").notEmpty();
   req.checkBody("email", "Email field is required").isEmail();
   req.checkBody("email_confirm", "Emails are not matching").equals(req.body.email);
-  // req.checkBody("password", "Password field is required").notEmpty();
-  req.check("password", "Password should be combination of one uppercase , one lower case, one special char, one digit and min 8 , max 20 char long").matches("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/", "i");
+  req.checkBody("password", "Password field is required").notEmpty();
+  // req.check("password", "Password should be combination of one uppercase , one lower case, one special char, one digit and min 8 , max 20 char long").matches("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/", "i");
   req.checkBody("password_confirm", "Please confirm your password").equals(req.body.password);
 
   let errors = req.validationErrors();
@@ -85,14 +85,7 @@ router.get("/profile", isAuth, (req, res, next) => {
     if (err) {
       console.log(err);
     }
-
-  
-   
-    res.render("profile", {
-     
-      questions: questions
-     
-    });
+    res.render("profile",{user:req.user});
   })
  
 });

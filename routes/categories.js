@@ -5,18 +5,17 @@ const isAuth=require('../config/isAuth')
 
 Category = require("../models/Category");
 
-router.get("/",isAuth, (req, res, next) => {
+router.get("/",isAuth, async(req, res, next) => {
   Category.getCategories((err, categories) => {
     if (err) {
       res.send(err);
     }
-
-    res.render("categories", { title: "Categories", categories: categories });
+    // res.status(200).json(categories);
+    res.render("categories", {title:"Categories", categories });
   });
 });
 router.post("/add",isAuth, (req, res, next) => {
   req.checkBody("title", "Title is required").notEmpty();
-  req.checkBody("image", "Title is required").notEmpty();
   req.checkBody("description", "Description is required").notEmpty();
 
   let errors = req.validationErrors();
@@ -26,14 +25,12 @@ router.post("/add",isAuth, (req, res, next) => {
       title: "Create Category"
     });
   } else {
-    let category = new Category();
-    category.title = req.body.title;
-    category.description = req.body.description;
-    category.image=req.body.image;
-    Category.addCategory(category, (err, category) => {
+ 
+    Category.addCategory(req.body, (err, category) => {
       if (err) {
         res.send(err);
       }
+  
       req.flash("success", "Category saved!");
 
       res.redirect("/manage/categories");
@@ -57,14 +54,14 @@ router.post("/edit/:id",isAuth, (req, res, next) => {
       });
     });
   } else {
-    let category = new Category();
-    const query = { _id: req.params.id };
-    const update = {
-      title: req.body.title,
-      description: req.body.description
-    };
+    // let category = new Category();
+    // const query = { _id: req.params.id };
+    // const update = {
+    //   title: req.body.title,
+    //   description: req.body.description
+    // };
 
-    Category.updateCategory(query, update, {}, (err, category) => {
+    Category.updateCategory(req.params.id, req.body, {}, (err, category) => {
       if (err) {
         res.send(err);
       }
@@ -81,6 +78,7 @@ router.delete("/delete/:id",isAuth, (req, res, next) => {
       res.send(err);
     }
     res.status(200);
+    req.flash("success", "Category deleted!");
   });
 });
 

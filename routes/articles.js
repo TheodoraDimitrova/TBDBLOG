@@ -6,7 +6,7 @@ const isAuth = require('../config/isAuth');
 Article = require('../models/Article');
 Category = require('../models/Category');
 
-router.get('/', isAuth, (req, res, next) => {
+router.get('/',isAuth, (req, res, next) => { 
   Article.getArticles((err, articles) => {
     if (err) {
       console.log(err);
@@ -16,9 +16,9 @@ router.get('/', isAuth, (req, res, next) => {
         'MMMM Do YYYY, h:mm:ss a'
       );
       article.date = moment(article.created_on).format('Do MMM');
+  
     });
-
-    res.render('articles', { title: 'All Articles', articles: articles });
+     res.render('articles', { title: 'All Articles', articles: articles });
   });
 });
 router.get('/show/:id', isAuth, (req, res, next) => {
