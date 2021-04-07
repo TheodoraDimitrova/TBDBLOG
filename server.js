@@ -12,7 +12,7 @@ const Handlebars = require('handlebars')
 const expressHandlebars = require('express-handlebars');
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
-const PORT = process.env.PORT || 8000;
+
 
 const app = express();
 // Add Access Control Allow Origin headers
@@ -110,10 +110,5 @@ app.use('/users', require('./routes/users'));
 app.use('/questions', require('./routes/questions'));
 
 //Start server
-app.set("port",PORT)
-
-app.listen(PORT, () => {
-
-  console.log(`Server starts at port ${PORT}`);
-  
-});
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => console.log(`Server start on port ${PORT}`));
